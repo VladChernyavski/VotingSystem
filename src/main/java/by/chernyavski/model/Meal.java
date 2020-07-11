@@ -1,10 +1,26 @@
 package by.chernyavski.model;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name = "meals")
 public class Meal extends AbstractBaseEntity{
 
+    @NotBlank
+    @Size(min = 2, max = 100)
+    @Column(name = "dish_name", nullable = false)
     private String dishName;
 
+    @Column(name = "price", nullable = false)
     private Double price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
 
     public Meal(){
 
