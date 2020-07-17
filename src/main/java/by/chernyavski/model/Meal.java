@@ -26,6 +26,13 @@ public class Meal extends AbstractBaseEntity{
 
     }
 
+    public Meal(Integer id, @NotBlank @Size(min = 2, max = 100) String dishName, Double price) {
+        super(id);
+        this.dishName = dishName;
+        this.price = price;
+        this.restaurant = restaurant;
+    }
+
     public String getDishName() {
         return dishName;
     }
@@ -40,6 +47,14 @@ public class Meal extends AbstractBaseEntity{
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override

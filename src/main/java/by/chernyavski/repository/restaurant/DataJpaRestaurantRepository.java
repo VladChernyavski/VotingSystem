@@ -1,4 +1,4 @@
-package by.chernyavski.repository.datajpa;
+package by.chernyavski.repository.restaurant;
 
 import by.chernyavski.model.Restaurant;
 import by.chernyavski.repository.RestaurantRepository;
@@ -13,6 +13,21 @@ public class DataJpaRestaurantRepository implements RestaurantRepository {
 
     public DataJpaRestaurantRepository(CrudRestaurantRepository restaurantRepository){
         this.restaurantRepository = restaurantRepository;
+    }
+
+    @Override
+    public Restaurant save(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return restaurantRepository.deleteById(id) != 0;
+    }
+
+    @Override
+    public Restaurant get(int id) {
+        return restaurantRepository.findById(id).orElse(null);
     }
 
     @Override

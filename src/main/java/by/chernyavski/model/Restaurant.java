@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "restaurant")
@@ -16,11 +17,22 @@ public class Restaurant extends AbstractBaseEntity{
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    private Set<Meal> meals;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")
+    private List<Meal> meals;
 
     public Restaurant(){
 
+    }
+
+    public Restaurant(@NotBlank @Size(min = 2, max = 100) String name, List<Meal> meals) {
+        this.name = name;
+        this.meals = meals;
+    }
+
+    public Restaurant(Integer id, @NotBlank @Size(min = 2, max = 100) String name, List<Meal> meals) {
+        super(id);
+        this.name = name;
+        this.meals = meals;
     }
 
     public String getName() {
@@ -31,11 +43,11 @@ public class Restaurant extends AbstractBaseEntity{
         this.name = name;
     }
 
-    public Set<Meal> getMeals() {
+    public List<Meal> getMeals() {
         return meals;
     }
 
-    public void setMeals(Set<Meal> meals) {
+    public void setMeals(List<Meal> meals) {
         this.meals = meals;
     }
 

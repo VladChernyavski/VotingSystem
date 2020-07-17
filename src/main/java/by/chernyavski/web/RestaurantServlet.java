@@ -1,7 +1,7 @@
 package by.chernyavski.web;
 
 import by.chernyavski.repository.RestaurantRepository;
-import by.chernyavski.repository.datajpa.DataJpaRestaurantRepository;
+import by.chernyavski.repository.restaurant.DataJpaRestaurantRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -32,6 +32,6 @@ public class RestaurantServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("restaurant", repository.getAll());
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/restaurant.jsp").forward(request, response);
     }
 }
