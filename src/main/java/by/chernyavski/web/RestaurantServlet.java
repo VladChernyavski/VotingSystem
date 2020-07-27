@@ -1,5 +1,6 @@
 package by.chernyavski.web;
 
+import by.chernyavski.model.Restaurant;
 import by.chernyavski.repository.RestaurantRepository;
 import by.chernyavski.repository.restaurant.DataJpaRestaurantRepository;
 import org.springframework.context.ApplicationContext;
@@ -25,13 +26,30 @@ public class RestaurantServlet extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         super.destroy();
     }
 
     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName(request.getParameter("name"));
+
+        repository.save(restaurant);
+        response.sendRedirect("restaurant");
+    }
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+
         request.setAttribute("restaurant", repository.getAll());
+
+        if ("create".equals(action)) {
+            request.getRequestDispatcher("/restaurantForm.jsp").forward(request, response);
+        }
+
         request.getRequestDispatcher("/restaurant.jsp").forward(request, response);
     }
 }

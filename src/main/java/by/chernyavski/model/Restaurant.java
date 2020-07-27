@@ -1,15 +1,13 @@
 package by.chernyavski.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "restaurant")
+@Entity
+@Table(name = "restaurant")
 public class Restaurant extends AbstractBaseEntity{
 
     @NotBlank

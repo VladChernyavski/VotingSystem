@@ -3,6 +3,7 @@ package by.chernyavski.repository.restaurant;
 import by.chernyavski.model.Restaurant;
 import by.chernyavski.repository.RestaurantRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class DataJpaRestaurantRepository implements RestaurantRepository {
     }
 
     @Override
+    @Transactional
     public Restaurant save(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
