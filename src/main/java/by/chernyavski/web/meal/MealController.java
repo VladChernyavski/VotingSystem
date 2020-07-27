@@ -28,8 +28,6 @@ public class MealController {
     @GetMapping
     public String getAll(Model model, @PathVariable(name = "restId") Integer restId){
         model.addAttribute("meals", mealRepository.getAll(restId));
-//        Restaurant restaurant = new Restaurant();
-//        model.addAttribute("rest", restaurant);
         return "meals";
     }
 
