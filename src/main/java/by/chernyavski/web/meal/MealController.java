@@ -4,6 +4,8 @@ import by.chernyavski.model.Meal;
 import by.chernyavski.model.Restaurant;
 import by.chernyavski.repository.MealRepository;
 import by.chernyavski.repository.RestaurantRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/{restId}/meals")
 public class MealController {
+    private static final Logger log = LoggerFactory.getLogger(MealController.class);
 
     private final MealRepository mealRepository;
     private final RestaurantRepository restaurantRepository;
@@ -28,6 +31,7 @@ public class MealController {
     @GetMapping
     public String getAll(Model model, @PathVariable(name = "restId") Integer restId){
         model.addAttribute("meals", mealRepository.getAll(restId));
+        log.info("getAll meals for restaurant {}", restaurantRepository.get(restId));
         return "meals";
     }
 

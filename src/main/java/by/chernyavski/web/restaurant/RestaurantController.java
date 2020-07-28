@@ -2,6 +2,8 @@ package by.chernyavski.web.restaurant;
 
 import by.chernyavski.model.Restaurant;
 import by.chernyavski.repository.RestaurantRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/restaurants")
 public class RestaurantController {
+    private static final Logger log = LoggerFactory.getLogger(RestaurantController.class);
 
     private final RestaurantRepository restaurantRepository;
 
@@ -24,6 +27,7 @@ public class RestaurantController {
     @GetMapping
     public String getAll(Model model){
         model.addAttribute("restaurants", restaurantRepository.getAll());
+        log.info("getAll restaurants");
         return "restaurant";
     }
 
