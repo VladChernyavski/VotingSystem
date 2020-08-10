@@ -45,4 +45,9 @@ public class DataJpaMealRepository implements MealRepository {
     public List<Meal> getAll(int restaurantId) {
         return mealRepository.getAll(restaurantId);
     }
+
+    @Override
+    public List<Meal> getAllWithoutId() {
+        return mealRepository.findAll();
+    }
 }

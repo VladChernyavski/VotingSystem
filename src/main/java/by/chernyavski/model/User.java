@@ -13,7 +13,7 @@ import java.util.Set;
 public class User extends AbstractBaseEntity{
 
     @NotBlank
-    @Size(min = 2, max = 100)
+    @Size(min = 4, max = 32)
     @Column(name = "name", nullable = false)
     private String name;
 
@@ -25,7 +25,7 @@ public class User extends AbstractBaseEntity{
 
     @Column(name = "password", nullable = false)
     @NotBlank
-    @Size(min = 5, max = 100)
+    @Size(min = 8, max = 32)
     private String password;
 
     @Enumerated(EnumType.STRING)

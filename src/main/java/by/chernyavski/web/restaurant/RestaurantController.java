@@ -1,6 +1,7 @@
 package by.chernyavski.web.restaurant;
 
 import by.chernyavski.model.Restaurant;
+import by.chernyavski.repository.MealRepository;
 import by.chernyavski.repository.RestaurantRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,16 +20,19 @@ public class RestaurantController {
     private static final Logger log = LoggerFactory.getLogger(RestaurantController.class);
 
     private final RestaurantRepository restaurantRepository;
+    private final MealRepository mealRepository;
 
-    public RestaurantController(RestaurantRepository restaurantRepository) {
+    public RestaurantController(RestaurantRepository restaurantRepository, MealRepository mealRepository) {
         this.restaurantRepository = restaurantRepository;
+        this.mealRepository = mealRepository;
     }
 
     @GetMapping
     public String getAll(Model model){
         model.addAttribute("restaurants", restaurantRepository.getAll());
+        model.addAttribute("meals", mealRepository.getAllWithoutId());
         log.info("getAll restaurants");
-        return "restaurant";
+        return "restaurantBoot";
     }
 
     @GetMapping("/delete/{id}")

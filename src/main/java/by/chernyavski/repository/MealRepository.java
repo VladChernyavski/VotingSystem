@@ -16,4 +16,6 @@ public interface MealRepository {
 
     // ORDERED dateTime desc
     List<Meal> getAll(int restaurantId);
+
+    List<Meal> getAllWithoutId();
 }

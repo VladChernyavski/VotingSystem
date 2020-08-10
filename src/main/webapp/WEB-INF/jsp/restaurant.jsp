@@ -21,6 +21,15 @@
                 <td><a href="${rs.id}/meals">${rs.name}</a></td>
                 <td><a href="restaurants/update/${rs.id}">Update</a></td>
                 <td><a href="restaurants/delete/${rs.id}">Delete</a></td>
+
+                <c:forEach items="${meals}" var="meal">
+                    <c:if test="${meal.restaurant.id == rs.id}">
+                <td>
+                        ${meal.dishName}
+                </td>
+                    </c:if>
+                </c:forEach>
+
             </tr>
             </c:forEach>
         </tbody>
