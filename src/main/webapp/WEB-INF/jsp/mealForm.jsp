@@ -14,6 +14,7 @@
     <form method="post" action="${pageContext.request.contextPath}/${meal.restaurant.id}/meals">
         <input type="hidden" name="id" value="${meal.id}">
         <input type="hidden" name="restId" value="${meal.restaurant.id}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <dl>
             <dt>Dish name:</dt>
             <dd><input type="text" value="${meal.dishName}" name="dishName" required></dd>
