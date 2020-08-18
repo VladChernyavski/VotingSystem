@@ -5,7 +5,7 @@ FROM meals;
 DELETE
 FROM users;
 DELETE
-FROM restaurant;
+FROM restaurants;
 ALTER SEQUENCE global_seq RESTART WITH 1000;
 
 INSERT INTO users (name, email, password)
@@ -16,7 +16,7 @@ INSERT INTO user_roles (role, user_id)
 VALUES ('USER', 1000),
        ('ADMIN', 1001);
 
-INSERT INTO restaurant (id, name)
+INSERT INTO restaurants (id, name)
 VALUES (1002, 'Italy restaurant'),
        (1003, 'Franc restaurant'),
        (1004, 'Russian restaurant');
@@ -27,3 +27,8 @@ VALUES ('Картошка', 500, 1004),
        ('Макароны', 600, 1002),
        ('Пицца', 570, 1002),
        ('Булочка', 100, 1003);
+
+INSERT INTO votes (date, user_id, restaurant_id)
+VALUES ('2020-08-17', 1001, 1004),
+       ('2020-08-17', 1000, 1004),
+       ('2020-08-18', 1000, 1002);

@@ -6,10 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "restaurant")
+@Table(name = "restaurants")
 public class Restaurant extends AbstractBaseEntity{
 
     @NotBlank
@@ -20,6 +19,9 @@ public class Restaurant extends AbstractBaseEntity{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @JsonIgnore
     private List<Meal> meals;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    private List<Vote> votes;
 
     public Restaurant(){
 
@@ -50,6 +52,14 @@ public class Restaurant extends AbstractBaseEntity{
 
     public void setMeals(List<Meal> meals) {
         this.meals = meals;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     @Override

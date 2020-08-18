@@ -1,8 +1,11 @@
 package by.chernyavski.web.restaurant;
 
 import by.chernyavski.model.Restaurant;
+import by.chernyavski.model.Vote;
 import by.chernyavski.repository.MealRepository;
 import by.chernyavski.repository.RestaurantRepository;
+import by.chernyavski.repository.VoteRepository;
+import by.chernyavski.util.VoteCounterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/restaurants")
@@ -21,16 +26,21 @@ public class RestaurantController {
 
     private final RestaurantRepository restaurantRepository;
     private final MealRepository mealRepository;
+    private final VoteRepository voteRepository;
 
-    public RestaurantController(RestaurantRepository restaurantRepository, MealRepository mealRepository) {
+    public RestaurantController(RestaurantRepository restaurantRepository, MealRepository mealRepository, VoteRepository voteRepository) {
         this.restaurantRepository = restaurantRepository;
         this.mealRepository = mealRepository;
+        this.voteRepository = voteRepository;
     }
 
     @GetMapping
     public String getAll(Model model){
-        model.addAttribute("restaurants", restaurantRepository.getAll());
+        List<Vote> votes = voteRepository.getAllByDateWithRest(LocalDate.now());
+        model.addAttribute("restaurantsTo", VoteCounterUtil.getTo(restaurantRepository.getAll(),
+                votes));
         model.addAttribute("meals", mealRepository.getAllWithoutId());
+        model.addAttribute("votesSize", votes.size());
         log.info("getAll restaurants");
         return "restaurantBoot";
     }

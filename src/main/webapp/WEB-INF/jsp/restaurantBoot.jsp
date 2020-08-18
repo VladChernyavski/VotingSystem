@@ -18,9 +18,11 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${restaurants}" var="rs">
+            <c:forEach items="${restaurantsTo}" var="rs">
+
                 <tr>
                     <td>${rs.name}</td>
+                    <td>${rs.countVote}</td>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <td><a href="${rs.id}/meals">Info</a></td>
                         <td><a href="restaurants/update/${rs.id}">Update</a></td>
