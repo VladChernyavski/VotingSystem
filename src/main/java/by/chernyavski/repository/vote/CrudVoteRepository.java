@@ -1,5 +1,6 @@
 package by.chernyavski.repository.vote;
 
+import by.chernyavski.model.User;
 import by.chernyavski.model.Vote;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,4 +26,6 @@ public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
     @EntityGraph(attributePaths = {"restaurant"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("SELECT v from Vote v WHERE v.date=:date")
     List<Vote> getAllByDateWithRest(@Param("date") LocalDate date);
+
+    Vote getVoteByDateAndUser(LocalDate date, User user);
 }

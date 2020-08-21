@@ -31,22 +31,6 @@
 
 <div class="container">
 
-<%--    <form method="POST" action="${contextPath}/login" class="form-signin">--%>
-<%--        <h2 class="form-heading">Log in</h2>--%>
-
-<%--        <div class="form-group ${error != null ? 'has-error' : ''}">--%>
-<%--            <span>${message}</span>--%>
-<%--            <input name="email" type="email" class="form-control" placeholder="Email"--%>
-<%--                   autofocus="true"/>--%>
-<%--            <input name="password" type="password" class="form-control" placeholder="Password"/>--%>
-<%--            <span>${error}</span>--%>
-<%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-
-<%--            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>--%>
-<%--            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>--%>
-<%--        </div>--%>
-<%--    </form>--%>
-
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
@@ -70,6 +54,10 @@
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
                         <hr class="my-4">
                     </form>
+                    <div class="row">
+                        <a class="nav-link" href="${contextPath}/registration">Go to registration page</a>
+                        <a class="nav-link" href="${contextPath}/">Home page</a>
+                    </div>
                 </div>
             </div>
         </div>

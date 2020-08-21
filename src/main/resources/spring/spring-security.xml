@@ -15,8 +15,10 @@
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/restaurants" access="permitAll()"/>
 
+        <intercept-url pattern="/**/meals" access="isAuthenticated()"/>
         <intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/restaurants/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/**/meals/**" access="hasRole('ROLE_ADMIN')"/>
 
         <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error"
                     username-parameter="email" password-parameter="password"/>

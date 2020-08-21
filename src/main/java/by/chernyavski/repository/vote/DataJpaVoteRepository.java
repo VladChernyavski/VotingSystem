@@ -1,5 +1,6 @@
 package by.chernyavski.repository.vote;
 
+import by.chernyavski.model.User;
 import by.chernyavski.model.Vote;
 import by.chernyavski.repository.VoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class DataJpaVoteRepository implements VoteRepository {
     @Override
     public List<Vote> getAllByDateWithRest(LocalDate date) {
         return voteRepository.getAllByDateWithRest(date);
+    }
+
+    @Override
+    public Vote getVoteByDateAndUser(LocalDate date, User user) {
+        return voteRepository.getVoteByDateAndUser(date, user);
     }
 }

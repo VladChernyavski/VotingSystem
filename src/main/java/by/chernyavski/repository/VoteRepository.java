@@ -1,5 +1,6 @@
 package by.chernyavski.repository;
 
+import by.chernyavski.model.User;
 import by.chernyavski.model.Vote;
 
 import java.time.LocalDate;
@@ -17,4 +18,6 @@ public interface VoteRepository {
     List<Vote> getAllByDate(LocalDate dateTime);
 
     List<Vote> getAllByDateWithRest(LocalDate dateTime);
+
+    Vote getVoteByDateAndUser(LocalDate date, User user);
 }

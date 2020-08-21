@@ -73,4 +73,6 @@ public class RestaurantController {
         restaurantRepository.save(restaurant);
         return "redirect:/restaurants";
     }
+
+
 }

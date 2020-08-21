@@ -104,7 +104,7 @@
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
                             <hr class="my-4">
                         </form:form>
-
+                    <a class="nav-link" href="${contextPath}/">Home page</a>
                 </div>
             </div>
         </div>

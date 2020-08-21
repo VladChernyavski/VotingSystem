@@ -1,19 +1,30 @@
-<!doctype html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<body class="text-center">
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<form:form method="post" modelAttribute="voteForm" action="">
+    <spring:bind path="date">
+            <input hidden type="date" value="${pageContext.}" >
+    </spring:bind>
 
+    <spring:bind path="email">
+        <div class="form-label-group ${status.error ? 'has-error' : ''}">
+            <form:input id="email" type="email" path="email" class="form-control" placeholder="Email"
+                        autofocus="true"></form:input>
+            <form:errors path="email"></form:errors>
+            <label for="email">Email address</label>
+        </div>
+    </spring:bind>
 
-    <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p>
-    </main>
+    <spring:bind path="password">
+        <div class="form-label-group ${status.error ? 'has-error' : ''}">
+            <form:input id="password" type="password" path="password" class="form-control" placeholder="Password"></form:input>
+            <form:errors path="password"></form:errors>
+            <label for="password">Password</label>
+        </div>
+    </spring:bind>
 
-
-</div>
-</body>
-</html>
+    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+    <hr class="my-4">
+</form:form>
