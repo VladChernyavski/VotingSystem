@@ -14,6 +14,7 @@
     <context:component-scan base-package="by.chernyavski.repository.**"/>
     <jpa:repositories base-package="by.chernyavski.repository.**"/>
 
+    <beans profile="heroku">
         <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
 
         <bean class="java.net.URI" id="dbUrl">
@@ -35,6 +36,7 @@
               p:removeAbandoned="true"
               p:testOnConnect="true"
               p:testWhileIdle="true"/>
+    </beans>
 
 <!--    <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>-->
 
