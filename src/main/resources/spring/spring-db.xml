@@ -15,7 +15,7 @@
     <jpa:repositories base-package="by.chernyavski.repository.**"/>
 
     <beans profile="heroku">
-        <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
+        <context:property-placeholder location="classpath:db/heroku.properties" system-properties-mode="OVERRIDE"/>
 
         <bean class="java.net.URI" id="dbUrl">
             <constructor-arg value="${DATABASE_URL}"/>
