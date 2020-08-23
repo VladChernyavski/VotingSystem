@@ -248,6 +248,7 @@
             <version>${webjars-noty.version}</version>
         </dependency>
     </dependencies>
+
     <profiles>
         <profile>
             <id>heroku</id>
