@@ -18,15 +18,15 @@ VALUES ('USER', 1000),
 
 INSERT INTO restaurants (id, name)
 VALUES (1002, 'Italy restaurant'),
-       (1003, 'Franc restaurant'),
+       (1003, 'France restaurant'),
        (1004, 'Russian restaurant');
 
 INSERT INTO meals (dish_name, price, restaurant_id)
-VALUES ('Картошка', 500, 1004),
+VALUES ('Оливье', 500, 1004),
        ('Мясо', 900, 1004),
        ('Макароны', 600, 1002),
        ('Пицца', 570, 1002),
-       ('Булочка', 100, 1003);
+       ('Круассан', 100, 1003);
 
 INSERT INTO votes (date, user_id, restaurant_id)
 VALUES ('2020-08-17', 1001, 1004),
