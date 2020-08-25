@@ -31,7 +31,7 @@ public class MealController {
     @GetMapping
     public String getAll(Model model, @PathVariable(name = "restId") Integer restId){
         model.addAttribute("meals", mealRepository.getAll(restId));
-//        log.info("getAll meals for restaurant {}", restaurantRepository.get(restId));
+        log.info("getAll meals for restaurant");
         return "meals";
     }
 

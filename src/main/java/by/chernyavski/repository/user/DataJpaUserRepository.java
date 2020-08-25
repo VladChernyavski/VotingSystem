@@ -5,6 +5,7 @@ import by.chernyavski.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class DataJpaUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public User save(User user) {
         return userRepository.save(user);
     }

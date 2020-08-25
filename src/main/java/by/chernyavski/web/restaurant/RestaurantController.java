@@ -42,7 +42,7 @@ public class RestaurantController {
         model.addAttribute("meals", mealRepository.getAllWithoutId());
         model.addAttribute("votesSize", votes.size());
         log.info("getAll restaurants");
-        return "restaurantBoot";
+        return "restaurants";
     }
 
     @GetMapping("/delete/{id}")

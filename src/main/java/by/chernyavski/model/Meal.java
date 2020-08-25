@@ -1,7 +1,6 @@
 package by.chernyavski.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -32,7 +31,6 @@ public class Meal extends AbstractBaseEntity{
         super(id);
         this.dishName = dishName;
         this.price = price;
-        this.restaurant = restaurant;
     }
 
     public String getDishName() {

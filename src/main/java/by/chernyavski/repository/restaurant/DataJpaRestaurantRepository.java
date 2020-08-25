@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class DataJpaRestaurantRepository implements RestaurantRepository {
 
-    private CrudRestaurantRepository restaurantRepository;
+    private final CrudRestaurantRepository restaurantRepository;
 
     public DataJpaRestaurantRepository(CrudRestaurantRepository restaurantRepository){
         this.restaurantRepository = restaurantRepository;

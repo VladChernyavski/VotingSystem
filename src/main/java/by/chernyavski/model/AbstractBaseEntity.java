@@ -1,7 +1,6 @@
 package by.chernyavski.model;
 
 import org.springframework.data.domain.Persistable;
-import org.springframework.util.Assert;
 
 import javax.persistence.*;
 

@@ -10,23 +10,6 @@
     <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 <body>
-<%--<section>--%>
-<%--    <h3><a href="index">Home</a></h3>--%>
-<%--    <hr>--%>
-<%--    <h2>Create restaurant</h2>--%>
-<%--    <jsp:useBean id="restaurant" type="by.chernyavski.model.Restaurant" scope="request"/>--%>
-<%--    <form method="post" action="${pageContext.request.contextPath}/restaurants">--%>
-<%--        <input type="hidden" name="id" value="${restaurant.id}">--%>
-<%--        <dl>--%>
-<%--            <dt>Name:</dt>--%>
-<%--            <dd><input type="text" value="${restaurant.name}" name="name" required></dd>--%>
-
-<%--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--        </dl>--%>
-<%--        <button type="submit">Save</button>--%>
-<%--        <button onclick="window.history.back()" type="button">Cancel</button>--%>
-<%--    </form>--%>
-<%--</section>--%>
 <div class="container">
 
     <div class="row">
@@ -35,7 +18,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Create restaurant</h5>
                     <jsp:useBean id="restaurant" type="by.chernyavski.model.Restaurant" scope="request"/>
-                    <form class="form-signin" method="POST" action="${pageContext.request.contextPath}/restaurants">
+                    <form class="form-signin" method="POST" action="${contextPath}/restaurants">
                         <input type="hidden" name="id" value="${restaurant.id}">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 

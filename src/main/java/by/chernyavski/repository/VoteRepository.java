@@ -4,7 +4,6 @@ import by.chernyavski.model.User;
 import by.chernyavski.model.Vote;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public interface VoteRepository {

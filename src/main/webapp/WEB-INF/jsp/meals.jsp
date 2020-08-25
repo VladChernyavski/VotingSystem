@@ -8,7 +8,6 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <jsp:include page="fragments/bodyHeader.jsp"/>
 
-
     <main role="main" class="inner cover">
         <h1 class="cover-heading">Restaurant menu</h1>
         <hr/>

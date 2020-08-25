@@ -17,7 +17,6 @@ public class Restaurant extends AbstractBaseEntity{
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    @JsonIgnore
     private List<Meal> meals;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")

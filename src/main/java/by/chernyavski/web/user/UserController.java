@@ -27,7 +27,6 @@ public class UserController {
     @GetMapping(value = "/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
-
         return "registration";
     }
 
@@ -40,7 +39,6 @@ public class UserController {
         }
 
         userService.create(userForm);
-
         securityService.autoLogin(userForm.getEmail(), userForm.getPassword());
 
         return "redirect:/";

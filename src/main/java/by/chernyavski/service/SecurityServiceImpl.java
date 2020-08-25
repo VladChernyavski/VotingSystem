@@ -1,6 +1,5 @@
 package by.chernyavski.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 public class SecurityServiceImpl implements SecurityService {
 
     private final AuthenticationManager authenticationManager;
-
     private final UserDetailsService userDetailsService;
 
     public SecurityServiceImpl(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {

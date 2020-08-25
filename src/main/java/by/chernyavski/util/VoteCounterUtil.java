@@ -3,8 +3,6 @@ package by.chernyavski.util;
 import by.chernyavski.model.Restaurant;
 import by.chernyavski.model.Vote;
 import by.chernyavski.to.RestaurantTo;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -22,13 +20,6 @@ public class VoteCounterUtil {
                                 }
                         )
                 );
-
-//        for(Vote v : votes){
-//            Restaurant key = v.getRestaurant();
-//            if(map.containsKey(key)){
-//                map.put(key, map.get(key) + 1);
-//            }
-//        }
 
         return restaurants.stream()
                 .map(restaurant -> createTo(restaurant, map.get(restaurant)))

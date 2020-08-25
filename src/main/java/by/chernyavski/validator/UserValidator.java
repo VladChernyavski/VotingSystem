@@ -2,7 +2,6 @@ package by.chernyavski.validator;
 
 import by.chernyavski.model.User;
 import by.chernyavski.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -27,7 +26,7 @@ public class UserValidator implements Validator {
         User user = (User) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
-        if(user.getName().length() < 2 || user.getName().length() > 32){
+        if(user.getName().length() < 4 || user.getName().length() > 32){
             errors.rejectValue("name", "Size.userForm.name");
         }
 

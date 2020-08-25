@@ -46,7 +46,6 @@
                 </tr>
             </c:forEach>
             </tbody>
-
         </table>
         <hr/>
         <sec:authorize url="/restaurants/create">
