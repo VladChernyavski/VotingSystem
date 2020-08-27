@@ -1,26 +1,31 @@
 package by.chernyavski.web.user;
 
-import by.chernyavski.repository.UserRepository;
+import by.chernyavski.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "/users")
 public class AdminController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public AdminController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public AdminController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public String getAll(Model model){
-        model.addAttribute("users", userRepository.getAll());
+        model.addAttribute("users", userService.getAll());
         return "users";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id){
+        userService.delete(id);
+        return "redirect:/users";
+    }
 
 }
