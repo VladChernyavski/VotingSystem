@@ -1,9 +1,12 @@
 package by.chernyavski.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,10 +38,19 @@ public class User extends AbstractBaseEntity{
     private Set<Role> roles;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonIgnore
     private List<Vote> votes;
 
     public User(){
 
+    }
+
+    public User(Integer id, @NotBlank @Size(min = 4, max = 32) String name, @Email @NotBlank @Size(max = 100) String email, @NotBlank @Size(min = 8, max = 32) String password, Set<Role> roles) {
+        super(id);
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
     public String getName() {

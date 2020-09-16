@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/rest/restaurants/{restId}/meals", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/restaurants/{restId}/meals", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
 
     private final MealRepository mealRepository;
@@ -40,7 +40,11 @@ public class MealRestController {
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody Meal meal, @PathVariable int restId){
-        mealRepository.save(meal, restId);
+    public void update(@RequestBody Meal meal, @PathVariable int id, @PathVariable int restId){
+        Meal updated = mealRepository.get(id, restId);
+        updated.setDishName(meal.getDishName());
+        updated.setPrice(meal.getPrice());
+
+        mealRepository.save(updated, restId);
     }
 }

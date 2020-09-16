@@ -4,15 +4,12 @@ import by.chernyavski.model.Restaurant;
 import by.chernyavski.repository.RestaurantRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/rest/restaurants", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/restaurants", produces = MediaType.APPLICATION_JSON_VALUE)
 public class RestaurantRestController {
 
     private final RestaurantRepository restaurantRepository;
@@ -44,8 +41,10 @@ public class RestaurantRestController {
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@RequestBody Restaurant restaurant, @PathVariable int id) {
-        restaurantRepository.save(restaurant);
-    }
+        Restaurant updated = restaurantRepository.get(id);
+        updated.setName(restaurant.getName());
 
+        restaurantRepository.save(updated);
+    }
 
 }
